@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import EnquiryForm from '../components/EnquiryForm';
 import ContactForm from '../components/ContactForm';
+
+  
+ 
+
+
 import { 
   MapPin, 
   Phone, 
@@ -40,6 +45,8 @@ const Home = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
+
+   
   const slides = [
     {
       title: "Find Your Dream Home",
@@ -117,6 +124,42 @@ const Home = () => {
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
+
+
+  // ✅ VIDEO AUTOPLAY ON SCROLL
+useEffect(() => {
+  const iframe = document.getElementById("youtubeVideo") as HTMLIFrameElement | null;
+  const section = document.getElementById("video");
+
+  if (!iframe || !section) return;  // ⛔ avoids "undefined.src" errors
+
+  const originalSrc = iframe.src;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          iframe.src = originalSrc + "&autoplay=1";  // ✅ autoplay only when visible
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  observer.observe(section);
+
+  return () => observer.disconnect(); // ✅ clean up observer on unmount
+}, []);
+
+
+ 
+
+
+
+
+
+
+
   return (
     <div className="min-h-screen bg-white">
       {/* Floating Navigation */}
@@ -832,10 +875,12 @@ We offer properties in prime locations with transparent terms.
 
              
   <iframe
-    src="https://www.youtube.com/embed/Jfb9lZErme0?autoplay=1&mute=1&controls=1&rel=0&playsinline=1"
+   id="youtubeVideo"
+    src="https://www.youtube.com/embed/Jfb9lZErme0?enablejsapi=1&mute=1&controls=1&rel=0&playsinline=1"
     className="absolute top-0 left-0 w-full h-full rounded-2xl shadow-lg"
-    allow="autoplay; encrypted-media"
+     allow="autoplay; encrypted-media"
     allowFullScreen
+    
   ></iframe>
 
 
@@ -967,7 +1012,7 @@ We offer properties in prime locations with transparent terms.
             <div className="lg:col-span-2">
               <div className="flex items-center space-x-3 mb-6">
                 <img 
-                  src="/logo-removebg-preview copy.png" 
+                  src="/logo1.png" 
                   alt="Company Logo" 
                   className="h-12 w-12 object-contain"
                 />
