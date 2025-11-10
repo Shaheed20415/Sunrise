@@ -104,7 +104,7 @@ export default function RentalSection() {
       type: "Retail",
       area: "900 sq.ft",
       phone: "+91 9963632436",
-      amenities: ["Footfall Zone", "Parking", "Security"],
+      amenities: ["PowerBackup", "Parking", "Security"],
       description:
         "Retail shop located in a high footfall commercial area, suitable for clothing, mobiles, or other commercial outlets.",
       image:
