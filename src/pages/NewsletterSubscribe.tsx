@@ -217,9 +217,10 @@ const response = await fetch("/api/subscribe", {
           <div className="grid md:grid-cols-2 gap-4">
             <input
               type="text"
-              placeholder="Your Name (Optional)"
+              placeholder="Your Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              required
               className="w-full px-6 py-4 rounded-xl border-2 border-white/20 bg-white/10 backdrop-blur-md text-white placeholder-white/70 focus:border-white focus:bg-white/20 outline-none transition-all duration-300"
             />
 
